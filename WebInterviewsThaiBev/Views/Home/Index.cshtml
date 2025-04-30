@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form id="form1">
+    <div class="row">
+        <div class="col-md-6 pe-5 ps-5 pt-md-5 pt-3">
+            <Label for="firstName">First Name</Label>
+            <input ID="firstName" name="FirstName" class="form-control" />
+            <Label ID="FirstNameError" class="text-danger" style="display: none;">Please provide a First Name</Label>
+        </div>
+        <div class="col-md-6 pe-5 ps-5 pt-md-5 pt-3">
+            <Label for="lastName">Last Name</Label>
+            <input ID="lastName" name="LastName" class="form-control" />
+            <Label ID="LastNameError" class="text-danger" style="display: none;">Please provide a Last Name</Label>
+        </div>
+        <div class="col-md-6 pe-5 ps-5 pt-md-5 pt-3">
+            <Label for="email">Email</Label>
+            <input ID="email" name="Email" type="email" class="form-control"/>
+            <Label ID="EmailError" class="text-danger" style="display: none;">Please provide a valid Email</Label>
+        </div>
+        <div class="col-md-6 pe-5 ps-5 pt-md-5 pt-3">
+            <Label for="phone">Phone</Label>
+            <input ID="phone" name="Phone"  class="form-control" maxlength="10"/>
+            <Label ID="PhoneError" class="text-danger" style="display: none;">Please provide a valid Phone</Label>
+        </div>
+        <div class="col-md-6 pe-5 ps-5 pt-md-5 pt-3">
+            <Label for="profile">Profile</Label>
+            <input type="file" name="Profile" ID="profile" class="form-control col-md-6" accept="image/*" />
+            <Label ID="ProfileError" class="text-danger" style="display: none;">Please selected any Profile</Label>
+        </div>
+        <div class="col-md-6 pe-5 ps-5 pt-md-5 pt-3">
+            <Label for="birthDay">Birth Day</Label>
+            <input type="date" name="BirthDay" ID="birthDay" class="form-control" />
+            <Label ID="BirthDayError" class="text-danger" style="display: none;">Please provide a valid Birthday</Label>
+        </div>
+        <div class="col-md-6 pe-5 ps-5 pt-md-5 pt-3">
+            <Label for="occupation" >Occupation</Label>
+            <select ID="occupation" name="Occupation" class="form-select">
+                <option value="">--Select Occupation--</option>
+                <option value="Manager">Manager</option>
+                <option value="Designer">Designer</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Software Engineer">Software Engineer</option>
+            </select>
+            <Label ID="OccupationError" class="text-danger" style="display: none;">Please selected any Occupation</Label>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-6 pe-5 ps-5 pt-md-5 pt-3">
+            <Label>Sex</Label>
+            <div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" ID="male" name="Sex" value="male" />
+                    <label for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" ID="female" name="Sex" value="female" />
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <Label ID="SexError" class="text-danger" style="display: none;">Please selected any Sex</Label>
+        </div>
+        <div class="col-12 pe-5 ps-5 pt-md-5 pt-3 d-flex justify-content-center">
+            <button ID="submit" type="submit" class="btn btn-success pe-4 ps-4 me-5">Save</button>
+            <button type="button" id="clear"
+                    Class="btn btn-dark pe-4 ps-4 ms-5"
+                    onclick="$('form').find('input,select').filter((i, e) => !['male', 'female'].includes(e.id)).val('').end().filter((i, e) => ['male', 'female'].includes(e.id)).prop('checked', false).change().end().closest('div.col-md-6').find('label.text-danger').hide();">
+                Clear
+            </button>
+        </div>
+    </div>
+</form>
+<div id="alertBox" class="alert alert-success align-items-center position-absolute top-0 end-0 mt-2 me-2" role="alert" style="display: none;">
+    <div>
+        Save data Success Id:<span id="rowid"></span>
+    </div>
+</div>
